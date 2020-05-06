@@ -27,10 +27,7 @@ import java.rmi.UnexpectedException;
 public class TestBase  {
 
     public String buildTag = System.getenv("BUILD_TAG");
-    //public static String username = "test2badgerarmy";
-    //public static String accesskey = "e50fd699-c578-4695-b9ad-bf6e41f95a22";
     public String username = System.getenv("SAUCE_USERNAME");
-
     public String accesskey = System.getenv("SAUCE_ACCESS_KEY");
 
     /**
@@ -56,7 +53,7 @@ public class TestBase  {
                 //new Object[]{"firefox", "latest", "Windows 10"},
                 //new Object[]{"internet explorer", "11", "Windows 8.1"},
                 //new Object[]{"safari", "12.0", "macOS 10.13"},
-                //new Object[]{"chrome", "70", "macOS 10.13"},
+                new Object[]{"chrome", "latest", "macOS 10.13"},
                 new Object[]{"firefox", "latest-1", "Windows 10"},
         };
     }
