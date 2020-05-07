@@ -37,7 +37,7 @@ public class CheckboxTest extends TestBase {
 
 
         this.annotate("Assert checkbox checked");
-        Assert.assertFalse(page.verifyCheckBox());
+        Assert.assertTrue(page.verifyCheckBox());
     }
 
 }
