@@ -49,12 +49,12 @@ public class TestBase  {
     @DataProvider(name = "hardCodedBrowsers", parallel = true)
     public static Object[][] sauceBrowserDataProvider(Method testMethod) {
         return new Object[][]{
-                //new Object[]{"MicrosoftEdge", "17.17134", "Windows 10"},
+                //new Object[]{"MicrosoftEdge", "latest", "Windows 10"},
                 //new Object[]{"firefox", "latest", "Windows 10"},
-                //new Object[]{"internet explorer", "11", "Windows 8.1"},
-                //new Object[]{"safari", "12.0", "macOS 10.13"},
+                //new Object[]{"internet explorer", "latest", "Windows 10"},
+                //new Object[]{"safari", "latest", "macOS 10.13"},
                 new Object[]{"chrome", "latest", "macOS 10.15"},
-                //new Object[]{"firefox", "latest-1", "Windows 10"},
+                new Object[]{"firefox", "latest-1", "Windows 10"},
         };
     }
 
