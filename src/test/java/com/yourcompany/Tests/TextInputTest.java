@@ -6,6 +6,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.rmi.UnexpectedException;
@@ -17,6 +18,9 @@ import java.util.UUID;
  */
 
 public class TextInputTest extends TestBase {
+
+    public TextInputTest() throws UnsupportedEncodingException {
+    }
 
     /**
      * Runs a simple test verifying if the comment input is functional.
