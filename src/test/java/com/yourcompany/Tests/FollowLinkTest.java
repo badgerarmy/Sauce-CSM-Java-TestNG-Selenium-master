@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.rmi.UnexpectedException;
@@ -15,6 +16,9 @@ import java.rmi.UnexpectedException;
  */
 
 public class FollowLinkTest extends TestBase {
+
+    public FollowLinkTest() throws UnsupportedEncodingException {
+    }
 
     /**
      * Runs a simple test verifying link can be followed.

@@ -14,9 +14,11 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.rmi.UnexpectedException;
 
 /**
@@ -27,7 +29,7 @@ import java.rmi.UnexpectedException;
 public class TestBase  {
 
     public String buildTag = System.getenv("BUILD_TAG");
-    public String username = System.getenv("SAUCE_USERNAME");
+    public String username = URLEncoder.encode(System.getenv("SAUCE_USERNAME"), "UTF-8");
     public String accesskey = System.getenv("SAUCE_ACCESS_KEY");
 
     /**
@@ -39,6 +41,9 @@ public class TestBase  {
      * ThreadLocal variable which contains the Sauce Job Id.
      */
     private ThreadLocal<String> sessionId = new ThreadLocal<String>();
+
+    public TestBase() throws UnsupportedEncodingException {
+    }
 
     /**
      * DataProvider that explicitly sets the browser combinations to be used.
