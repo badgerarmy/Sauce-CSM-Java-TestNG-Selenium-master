@@ -28,7 +28,7 @@ public class TextInputTest extends TestBase {
      */
     @org.testng.annotations.Test(dataProvider = "hardCodedBrowsers")
     public void verifyCommentInputTest(String browser, String version, String os, Method method)
-            throws MalformedURLException, InvalidElementStateException, UnexpectedException {
+            throws MalformedURLException, InvalidElementStateException, UnexpectedException, UnsupportedEncodingException {
         this.createDriver(browser, version, os, method.getName());
         WebDriver driver = this.getWebDriver();
 

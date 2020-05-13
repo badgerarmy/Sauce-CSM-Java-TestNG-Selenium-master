@@ -27,7 +27,7 @@ public class CheckboxTest extends TestBase {
      */
     @Test(dataProvider = "hardCodedBrowsers")
     public void checkTheBox(String browser, String version, String os, Method method)
-            throws MalformedURLException, InvalidElementStateException, UnexpectedException {
+            throws MalformedURLException, InvalidElementStateException, UnexpectedException, UnsupportedEncodingException {
 
         //create webdriver session
         this.createDriver(browser, version, os, method.getName());

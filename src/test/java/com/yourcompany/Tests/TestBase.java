@@ -18,6 +18,7 @@ import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.rmi.UnexpectedException;
 
@@ -27,10 +28,19 @@ import java.rmi.UnexpectedException;
  * @author Neil Manvar
  */
 public class TestBase  {
+    public final String buildTag = System.getenv("BUILD_TAG");
+    public final String accesskey = System.getenv("SAUCE_ACCESS_KEY");
+    public final String username = setUsername();
 
-    public String buildTag = System.getenv("BUILD_TAG");
-    public String username = URLEncoder.encode(System.getenv("SAUCE_USERNAME"), "UTF-8");
-    public String accesskey = System.getenv("SAUCE_ACCESS_KEY");
+    public String setUsername() throws UnsupportedEncodingException {
+        String userTemp = "failureState";
+        try {
+            userTemp = URLEncoder.encode(System.getenv("SAUCE_USERNAME"), "UTF-8");
+        } catch(Exception e){}
+
+        return userTemp;
+
+    }
 
     /**
      * ThreadLocal variable which contains the  {@link WebDriver} instance which is used to perform browser interactions with.
@@ -91,7 +101,7 @@ public class TestBase  {
      * @throws MalformedURLException if an error occurs parsing the url
      */
     protected void createDriver(String browser, String version, String os, String methodName)
-            throws MalformedURLException, UnexpectedException {
+            throws MalformedURLException, UnexpectedException, UnsupportedEncodingException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         // set desired capabilities to launch appropriate browser on Sauce
@@ -105,9 +115,14 @@ public class TestBase  {
         }
 
         // Launch remote browser and set it as the current thread
+        String test = "https://" + username + ":" + accesskey + "@ondemand.saucelabs.com/wd/hub";
+
+        webDriver.set(new RemoteWebDriver(new URL(URLDecoder.decode(String.valueOf(test), "UTF-8")), capabilities));
+        /**
         webDriver.set(new RemoteWebDriver(
                 new URL("https://" + username + ":" + accesskey + "@ondemand.saucelabs.com/wd/hub"),
                 capabilities));
+              **/
 
         // set current sessionId
         String id = ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
