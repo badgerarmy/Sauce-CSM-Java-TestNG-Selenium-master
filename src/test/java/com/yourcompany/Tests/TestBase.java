@@ -117,12 +117,10 @@ public class TestBase  {
         // Launch remote browser and set it as the current thread
         String test = "https://" + username + ":" + accesskey + "@ondemand.saucelabs.com/wd/hub";
 
-        webDriver.set(new RemoteWebDriver(new URL(URLDecoder.decode(String.valueOf(test), "UTF-8")), capabilities));
-        /**
-        webDriver.set(new RemoteWebDriver(
-                new URL("https://" + username + ":" + accesskey + "@ondemand.saucelabs.com/wd/hub"),
-                capabilities));
-              **/
+        //webDriver.set(new RemoteWebDriver(new URL(URLDecoder.decode(test, "UTF-8")), capabilities));
+
+        webDriver.set(new RemoteWebDriver(new URL("https://" + username + ":" + accesskey + "@ondemand.saucelabs.com/wd/hub"), capabilities));
+            
 
         // set current sessionId
         String id = ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
