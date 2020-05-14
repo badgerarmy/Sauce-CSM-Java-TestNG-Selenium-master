@@ -30,7 +30,7 @@ import java.rmi.UnexpectedException;
 public class TestBase  {
     public final String buildTag = System.getenv("BUILD_TAG");
     public final String accesskey = System.getenv("SAUCE_ACCESS_KEY");
-    public final String username = setUsername();
+    public final String username = "sachin.chawla@saucelabs.com"; //setUsername();
 
     public String setUsername() throws UnsupportedEncodingException {
         String userTemp = "failureState";
@@ -117,10 +117,10 @@ public class TestBase  {
         // Launch remote browser and set it as the current thread
         String test = "https://" + username + ":" + accesskey + "@ondemand.saucelabs.com/wd/hub";
 
-        //webDriver.set(new RemoteWebDriver(new URL(URLDecoder.decode(test, "UTF-8")), capabilities));
+        webDriver.set(new RemoteWebDriver(new URL(URLDecoder.decode(test, "UTF-8")), capabilities));
 
-        webDriver.set(new RemoteWebDriver(new URL("https://" + username + ":" + accesskey + "@ondemand.saucelabs.com/wd/hub"), capabilities));
-            
+        //webDriver.set(new RemoteWebDriver(new URL("https://" + username + ":" + accesskey + "@ondemand.saucelabs.com/wd/hub"), capabilities));
+
 
         // set current sessionId
         String id = ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
