@@ -31,6 +31,9 @@ public class GuineaPigPage {
     @FindBy(id = "submit")
     private WebElement submitButton;
 
+    @FindBy(id = "fbemail")
+    private WebElement emailTextAreaInput;
+
     public WebDriver driver;
     public static String url = "https://saucelabs.github.io/training-test-page";
 
@@ -55,6 +58,11 @@ public class GuineaPigPage {
 
     public void submitComment(String text) {
         commentsTextAreaInput.sendKeys(text);
+        submitButton.click();
+    }
+
+    public void submitEmail(String text) {
+        emailTextAreaInput.sendKeys(text);
         submitButton.click();
     }
 
