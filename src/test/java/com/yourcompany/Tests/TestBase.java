@@ -1,5 +1,6 @@
 package com.yourcompany.Tests;
 
+import com.google.gson.internal.bind.util.ISO8601Utils;
 import com.saucelabs.common.SauceOnDemandAuthentication;
 import com.saucelabs.common.SauceOnDemandSessionIdProvider;
 import com.saucelabs.testng.SauceOnDemandAuthenticationProvider;
@@ -27,7 +28,7 @@ import java.rmi.UnexpectedException;
  * @author Neil Manvar
  */
 public class TestBase  {
-
+    public String endpoint = System.getenv("SAUCE_ENDPOINT");
     public String buildTag = System.getenv("BUILD_TAG");
     public String username = URLEncoder.encode(System.getenv("SAUCE_USERNAME"), "UTF-8");
     public String accesskey = System.getenv("SAUCE_ACCESS_KEY");
@@ -54,7 +55,7 @@ public class TestBase  {
     @DataProvider(name = "hardCodedBrowsers", parallel = true)
     public static Object[][] sauceBrowserDataProvider(Method testMethod) {
         return new Object[][]{
-                //new Object[]{"MicrosoftEdge", "latest", "Windows 10"},
+                new Object[]{"MicrosoftEdge", "latest", "Windows 10"},
                 //new Object[]{"firefox", "latest", "Windows 10"},
                 //new Object[]{"internet explorer", "latest", "Windows 10"},
                 //new Object[]{"safari", "latest", "macOS 10.13"},
@@ -106,7 +107,7 @@ public class TestBase  {
 
         // Launch remote browser and set it as the current thread
         webDriver.set(new RemoteWebDriver(
-                new URL("https://" + username + ":" + accesskey + "@ondemand.saucelabs.com/wd/hub"),
+                new URL("https://" + username + ":" + accesskey + endpoint),
                 capabilities));
 
         // set current sessionId
